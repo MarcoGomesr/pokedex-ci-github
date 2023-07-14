@@ -8,14 +8,14 @@ jobs:
   deploy:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v2
         with:
-          node-version: 16
+          node-version: 14
       - name: Install Dependencies
-        run: npm install --no-audit --no-fund --no-optional
+        run: npm ci
       - name: Lint
         run: npm run eslint
       - name: build
@@ -23,7 +23,7 @@ jobs:
       - name: test
         run: npm test
       - name: Cypress run
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v2
         with:
           command: npm run test:e2e
           start: npm run start-test
