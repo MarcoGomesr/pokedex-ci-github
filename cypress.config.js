@@ -1,3 +1,6 @@
 module.exports = {
-  video: false
+  video: false,
+  e2e: {
+    setupNodeEvents(on, config) {},
+  },
 }
